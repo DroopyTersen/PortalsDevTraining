@@ -1,5 +1,7 @@
 # Introduction to React
-This exercise is meant to isolate React and Typescript development.
+
+[Back to Home](/README.md)
+
 ## 1. Open the Exercise
 In the terminal, open the `react-intro` directory. Next, install all of the dependencies. Lastly, try running the web application.
 ``` bash
@@ -281,3 +283,4 @@ export default class StatefulComponent extends React.Component {
 }
 ```
 
+[Back to Home](/README.md)
