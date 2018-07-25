@@ -19,18 +19,16 @@ npm run start
 
 ### You should know...
 #### React is Component Based
-The "React way" advises us to break down complex UI's into separate encapsulated components.  
+The "React way" advises us to decompose complex UI's into separate encapsulated components.  
 
-Put less Computer Science'y: Break up the user interface into small pieces (components). Each component will be simpler because it focuses on only one thing. It also opens the door for component reuse.
+*Translation*: Break up the user interface into small pieces (components). Each component will be simpler because it focuses on only one thing. It also opens the door for component reuse.
 
 #### JSX is HTML/JavaScript
-One of the things people find jarring when starting with React is that we put the component's HTML (and sometimes styles) right inside the component's JS file. This feels weird because for the longest time, we have been conditioned to separate our HTML, JS, and CSS. 
+One of the things people find jarring when starting with React is that we put the component's HTML (and sometimes styles) right inside the component's JS file. This feels weird because we have been conditioned to separate our HTML, JS, and CSS. 
 
 React says, *"Nah, split your stuff out by components, not by file extensions, and then keep everything for that component together so it's easier to reuse"*.
 
-The example below is a React component the renders a blue circle button with an Edit icon.  You can see that the component is just a `class` that inherits from `React.Component`.  The one rule to remember is that all **components must implement a `render` method**.
-
-
+The example below is a React component the renders a blue circle button with an Edit icon.  
 ``` tsx
 import * as React from 'react';
 
@@ -54,11 +52,14 @@ const styles = {
     }
 }
 ```
+- The component is just a `class` that inherits from `React.Component`.  
+- The one rule to remember is that all **components must implement a `render` method**.
+
 Inside the `render` method you probably noticed something that looks HTML. 
 - But what are those curly braces? 
 - And how can we have html inside a JS/TS file if it isn't wrapped in a quotes? It's certainly not valid JavaScript/TypeScript. 
 
-Answer: JSX 
+Answer: **JSX** 
 
  > Did you notice when we add HTML classes to the `icon` tag, we use `className` instead of `class`? This is because `class` is a reserved keyword in javascript.
 
@@ -74,7 +75,7 @@ React.createElement("div", { id: "root" }, "Hello world");
 #### A custom Component can be rendered in another Component's JSX
 Once we create a component, we can use it inside another component's JSX.
 
-> *GOTCHA!* React components must be capitalized. It's how React tells the difference between native element and a custom component.
+> *GOTCHA!* React components must be capitalized. It's how React tells the difference between native elements and custom components.
 
 ``` tsx
 import * as React from 'react';
@@ -107,12 +108,14 @@ Create a brand new React component, `App`, to serve as your application's top le
 1. Create a new file, `src/App.tsx`
     - In TypeScript if you are creating a file that contains `JSX`, use the `.tsx` extension.
     - *More opinion than rule*: One component per file, and capitalize the filename.
-2. Use the sample below to implement the component. 
+2. Implement the `App` component 
     - For now render out an `h1` tag with your app's title
+    - *hint*: start w/ the code found in **Helpful snippets** at the bottom of this tutorial
 3. Import your `App` component into `entry.ts`.
     - Look back at the TypeScript tutorial if you need a refresh on importing a "default export".
-4. Render your `App` component instead of the `div` element.
+4. In `entry.ts`, render your `App` component instead of the `div` element.
     - Do you see your app's title in the browser now?
+
 5. Create another React component, `src/AppHeader.tsx`.
 6. Move the `h1` tag from `App` to the `AppHeader`.
     - Change the text a little so you know it updated
@@ -143,7 +146,7 @@ export interface IconButtonProps {
     onClick: () => void
 }
 ```
-- At the bottom of our component file we define the "Props" interface. This is how are parent components can tell what they should pass in.
+- At the bottom of our component file we define the "Props" interface. This is how parent components can tell what they should pass in.
 - Inside our component we can get access to prop values using `this.props.PROP_NAME` syntax.
 
 Now that the `IconButton` accepts `props`, we can create an instances of the `IconButton` in a parent component and pass prop values. 
@@ -158,7 +161,7 @@ export default class ParentComponent extends React.Component {
     render() {
         return (
             <div>
-                <IconButton icon="Plus" onClick={this.onAddItemClick} />
+                <IconButton icon="Add" onClick={this.onAddItemClick} />
                 <IconButton icon="Trash" onClick={this.onRemoveItemClick} />
             </div>
         );
@@ -177,13 +180,13 @@ Even in this simple example we are already seeing great code reuse! The IconButt
     - Do you see the updated title in the browser?
 
 ## Working with `state`
-We were successfully injected a parameterized `title` into our `AppHeader`, but the `title` value is still hardcoded inside the `App` component.  What happens if we have more dynamic data? 
+We successfully injected a parameterized `title` into our `AppHeader`, but the `title` value is still hardcoded inside the `App` component.  What happens if we need more dynamic data? 
 
-The classic example is an 'increment count' app. It display a big number and a button. Then increments the number everytime you click the button.  In this scenario we obviously can't hardcode the click count in `App`, we need to "React" (\*groan\*).
+The classic example is an 'Increment Count' app. It displays a big number and a button. Then increments the number everytime you click the button.  In this scenario we obviously can't hardcode the click count inside `App`, we need to "react" (\*groan\*).
 
 If we are talking about dynamic data (typically obtained through user interaction or web service calls), then we are probably going to be working with `state`. React `state` is kind of like `props`, except:
-- A React Component can NOT update it's own `props`. The parent always injects `props`.
-- A React Component manages it's own `state`. A parent or sibling component should not be modifying another component's `state`.
+- A React Component can NOT update it's own `props`. The parent always injects prop values.
+- A React Component manages it's own `state`. A parent or sibling component should modify another component's `state`.
 
 > *HOW IT WORKS:* React re-fires the render function (effectively updating the UI), any time a component updates it's state or the parent injects updated `props`.
 
@@ -226,7 +229,7 @@ We want to build a component that has a button we can click to show us the time.
 2. Import `CurrentTime` into `App` and render it
     - Do you see your text in the browser?
 3. Initialize `state` on `CurrentTime` and add a `time` property. 
-4. Add an `onClick` method to the `CurrentTime` component and update `this.state.time` property;
+4. Add an `onClick` method to the `CurrentTime` component and update `this.state.time`
     - Don't forget to use the `setState` method
     - *hint*: `new Date()` will give you an `Date` object that is set to 'now'.
     - *hint*: Date objects have a `toLocaleTimeString` method
