@@ -74,7 +74,7 @@ React.createElement("div", { id: "root" }, "Hello world");
 #### A custom Component can be rendered in another Component's JSX
 Once we create a component, we can use it inside another component's JSX.
 
-> *GOTCHA*: React components must be capitalized. It's how React tells the difference between native element and a custom component.
+> *GOTCHA!* React components must be capitalized. It's how React tells the difference between native element and a custom component.
 
 ``` tsx
 import * as React from 'react';
@@ -169,12 +169,26 @@ Even in this simple example we are already seeing great code reuse! The IconButt
 
 ### **Exercise**: Parameterize the App's Title
 1. Update `AppHeader` to accept a `title` prop
-    - *hint*: `AppHeaderProps` interface
+    - *hint*: the `AppHeaderProps` interface defines what AppHeader accepts
 2. Update `AppHeader` to render the `title` prop value
-    - *hint*: `this.props.foo`
+    - *hint*: access a prop value via `this.props.foo`
 3. Update `App` to pass a `title` prop value to `AppHeader`
     - Change the title a little so you can tell it updated
     - Do you see the updated title in the browser?
+
+## Working with `state`
+We were successfully injected a parameterized `title` into our `AppHeader`, but the `title` value is still hardcoded inside the `App` component.  What happens if we have more dynamic data? 
+
+The classic example is an 'increment count' app. It display a big number and a button. Then increments the number everytime you click the button.  In this scenario we obviously can't hardcode the click count in `App`, we need to "React" (\*groan\*).
+
+If we are talking about dynamic data (typically obtained through user interaction or web service calls), then we are probably going to be working with `state`. React `state` is kind of like `props`, except:
+- A React Component can NOT update it's own `props`. The parent always injects `props`.
+- A React Component manages it's own `state`. A parent or sibling component should not be modifying another component's `state`.
+
+> *HOW IT WORKS:* React re-fires the render function (effectively updating the UI), any time a component updates it's state or the parent injects updated `props`.
+
+> *PRO TIP*: A common pattern is to have a top-level component manage `state`, then pass the `state` values down as `props` to child components.  This way the child components can stay focused on the display, and the top-level component can focus on the logic/behavior/orchestration of dynamic data.
+
 
 ## Helpful Snippets
 
