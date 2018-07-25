@@ -70,7 +70,7 @@ React.createElement("div", { id: "root" }, "Hello world");
 [Click here](http://babeljs.io/repl/#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DYUwLgBGAWCWB2BzCBeCAiA9vcB3TMATiCOgNwBQAPACawBuAfABIjDCYT6HA0QDeMBIgC-AoUhFUA9HSZkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&sourceType=module&lineWrap=false&presets=react%2Cstage-2&prettier=true&targets=&version=6.26.0&envVersion=1.6.2) to experiment with how JSX gets transpiled.
 
 ### Exercise
-Create a brand new React component to serve as your application's top level container `App.tsx`.
+Create a brand new React component, `App`, to serve as your application's top level container. Then create an `AppHeader` component to display your app's title.
 
 1. Create a new file, `src/App.tsx`
     - In TypeScript if you are creating a file that contains `JSX`, use the `.tsx` extension.
@@ -80,8 +80,15 @@ Create a brand new React component to serve as your application's top level cont
 3. Import your `App` component into `entry.ts`.
     - Look back at the TypeScript tutorial if you need a refresh on importing a "default export".
 4. Render your `App` component instead of the `div` element.
+    - Do you see your app's title in the browser now?
+5. Create another React component, `src/AppHeader.tsx`.
+6. Move the `h1` tag from `App` to the `AppHeader`.
+    - Change the text a little so you know it updated
+7. Import `AppHeader` into `App` and render it.
+    - Do you see the updated app title in the browser?
 
-
+## Working with `props`
+The most common/useful thing you'll find about React is how easy it is to pass parameters/arguments to child components. These are called `props`.
 ## Helpful Snippets
 
 *New react component*
