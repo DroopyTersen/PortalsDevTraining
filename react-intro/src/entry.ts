@@ -1,5 +1,5 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import App from "./App";
 
-ReactDOM.render(React.createElement(App), document.getElementById("root"));
+let elem = React.createElement("div", {}, "hello there");
+ReactDOM.render(elem, document.getElementById("root"));
