@@ -1,13 +1,15 @@
 # Intro to Typescript
-TypeScript is a superset of JavaScript that compiles to plaing JavaScript
+TypeScript is a superset of JavaScript that compiles to plain JavaScript
 
-*Translation*: We can write our code using advanced language features then run it through a process that turns it into regular JavaScript that will run in any browser
+*Translation*: We can write our code using advanced language features then run it through a process that turns it into regular JavaScript so it will run in any browser.
 
 **What kind of "advanced language features"?**
 - **Static Types**: We can specify exactly what properties and methods our objects and classes should have
     - One of the best benefits of static types is the tooling it enables (like Intellisense in VS Code)
+- **Arrow Functions**: A short hand for creating functions. Also helps wrangle the dreaded `this`
 - **Async/Await**: Allows us to more elegantly represent asynchronous code. An alternative/supplement to Promises and callbacks.
 - **Modules**: Allows us to split our code into separate encapsulated files and import them as necessary.
+- Most modern EcmaScript features
 
 ## 1. Setup TypeScript
 #### 1. Install
@@ -83,7 +85,7 @@ log({ severity: "Info", message: "Hey there" })
 
 Update your `logger.ts` to the above and recompile
 
-- Is the interface in the output?
+- Is the interface in the JS output?
 
 ## 4. Classes
 
