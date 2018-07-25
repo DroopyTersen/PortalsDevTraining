@@ -1,5 +1,5 @@
 # Portals Dev Workshop 
-- PnP Powershell
-- Intro to TypeScript
+- [Intro to TypeScript](/typescript-intro/README.md)
 - [Intro to React](/react-intro/README.md)
+- PnP Powershell
 - SharePoint REST API & OData
