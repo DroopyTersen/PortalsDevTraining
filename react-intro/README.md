@@ -187,8 +187,62 @@ If we are talking about dynamic data (typically obtained through user interactio
 
 > *HOW IT WORKS:* React re-fires the render function (effectively updating the UI), any time a component updates it's state or the parent injects updated `props`.
 
-> *PRO TIP*: A common pattern is to have a top-level component manage `state`, then pass the `state` values down as `props` to child components.  This way the child components can stay focused on the display, and the top-level component can focus on the logic/behavior/orchestration of dynamic data.
+*Using React state to create an increment counter*
+``` tsx
+export default class IncrementApp extends React.Component {
+    state = {
+        count: 0
+    }
+    onClick = () => {
+        let newCount = this.state.count + 1;
+        this.setState({ count: newCount })
+    }
+    render() {
+        return (
+            <div>
+                <h1>{this.state.count}</h1>
+                <button type='button' onClick={this.onClick}>Increment</button>
+            </div>
+        );
+    }
+}
+```
+- Initialize `state` by adding a property to the Component class
+    - This is a good place to set default values
+    - See **Helpful snippets** below for an example
+- Access state values via `this.state.BLAH`
+- **DO** update state with the `setState` method
+    - `this.setState({ count: this.state.count + 1})`
+- **DON'T** update state with an expression
+    - `this.state.count = this.state.count + 1`
+    - This won't trigger a React update
 
+> *PRO TIP*: A common pattern is to have a top-level component manage `state`, then pass the `state` values down as `props` to child components.  This way the child components can stay focused on the display, and the top-level component can focus on the logic & orchestration of dynamic data.
+
+### **Exercise**: What time is it button?
+We want to build a component that has a button we can click to show us the time.
+1. Create a new React component named `CurrentTime`. 
+    - For now just render some text so you can tell its working
+2. Import `CurrentTime` into `App` and render it
+    - Do you see your text in the browser?
+3. Initialize `state` on `CurrentTime` and add a `time` property. 
+4. Add an `onClick` method to the `CurrentTime` component and update `this.state.time` property;
+    - Don't forget to use the `setState` method
+    - *hint*: `new Date()` will give you an `Date` object that is set to 'now'.
+    - *hint*: Date objects have a `toLocaleTimeString` method
+5. Render a `button` with an `onClick` wired up to the method you created in step 4.
+    - See the `IncrementApp` for a similar example
+6. Render the current time inside an `h3`
+    - Do you see your button in the browser?
+    - Does the time show up once you click the button?
+
+*Extra Credit*
+1. Show the time right away, without waiting for the user to click
+    - *hint*: We set default values when we initialize state
+2. Auto update the time so we don't even have to click
+    - *hint*: `componentDidMount`
+    - *hint*: `setInterval`
+3. Make it prettier by formatting the timestamp w/ `date-fns`
 
 ## Helpful Snippets
 
@@ -209,4 +263,18 @@ export interface MyComponentProps {
 }
 ```
 
+*Initialize `state`*
+``` tsx
+export default class StatefulComponent extends React.Component {
+    state = {
+        foo: "",
+        bar: [],
+        baz: {
+            biz: "None",
+            boom: 0
+        }
+    }
+    // Rest of component implementation
+}
+```
 
