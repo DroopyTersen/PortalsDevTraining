@@ -69,7 +69,34 @@ React.createElement("div", { id: "root" }, "Hello world");
 ```
 [Click here](http://babeljs.io/repl/#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DYUwLgBGAWCWB2BzCBeCAiA9vcB3TMATiCOgNwBQAPACawBuAfABIjDCYT6HA0QDeMBIgC-AoUhFUA9HSZkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&sourceType=module&lineWrap=false&presets=react%2Cstage-2&prettier=true&targets=&version=6.26.0&envVersion=1.6.2) to experiment with how JSX gets transpiled.
 
-### **Exercise**: Create 2 new components
+#### A React component can be used like a native HTML element
+Once we create a component, we can use it inside another component's JSX.
+``` tsx
+import * as React from 'react';
+
+class Child extends React.Component {
+    render() {
+        return (
+            <div>I'm a Child</div>
+        );
+    }
+}
+class Parent extends React.Component {
+    render() {
+        return (
+            <div>
+                <h2>I'm the Parent.</h2>
+                <div>These are my kids:</div>
+                <Child />
+                <Child />
+                <Child />
+            </div>
+        );
+    }
+```
+> *GOTCHA*: React components must be capitalized. It's how React tells the difference between native element and a custom component.
+
+### **Exercise**: Create an App and AppHeader component
 Create a brand new React component, `App`, to serve as your application's top level container. Then create an `AppHeader` component to display your app's title.
 
 1. Create a new file, `src/App.tsx`
