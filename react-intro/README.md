@@ -54,11 +54,13 @@ const styles = {
     }
 }
 ```
-Inside the `render` method you probably noticed we have what looks HTML. But what are those curly braces? And wait, how can we have html inside a JS/TS file if it isn't wrapped in a quotes? It's certainly not valid JavaScript/TypeScript. 
+Inside the `render` method you probably noticed something that looks HTML. 
+- But what are those curly braces? 
+- And how can we have html inside a JS/TS file if it isn't wrapped in a quotes? It's certainly not valid JavaScript/TypeScript. 
 
 Answer: JSX 
 
- > Did you notice when we add classes to the `icon` tag, we use `className` instead of `class`? This is because `class` is a reserved keyword in javascript.
+ > Did you notice when we add HTML classes to the `icon` tag, we use `className` instead of `class`? This is because `class` is a reserved keyword in javascript.
 
 If you're curious how it works, when we run our `build` step, the transpiler turns the JSX into valid JavaScript function calls.
 
@@ -69,8 +71,11 @@ React.createElement("div", { id: "root" }, "Hello world");
 ```
 [Click here](http://babeljs.io/repl/#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DYUwLgBGAWCWB2BzCBeCAiA9vcB3TMATiCOgNwBQAPACawBuAfABIjDCYT6HA0QDeMBIgC-AoUhFUA9HSZkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&sourceType=module&lineWrap=false&presets=react%2Cstage-2&prettier=true&targets=&version=6.26.0&envVersion=1.6.2) to experiment with how JSX gets transpiled.
 
-#### A React component can be used like a native HTML element
+#### A custom Component can be rendered in another Component's JSX
 Once we create a component, we can use it inside another component's JSX.
+
+> *GOTCHA*: React components must be capitalized. It's how React tells the difference between native element and a custom component.
+
 ``` tsx
 import * as React from 'react';
 
@@ -94,7 +99,7 @@ class Parent extends React.Component {
         );
     }
 ```
-> *GOTCHA*: React components must be capitalized. It's how React tells the difference between native element and a custom component.
+- If the above were rendered to the page, what would you expect to see?
 
 ### **Exercise**: Create an App and AppHeader component
 Create a brand new React component, `App`, to serve as your application's top level container. Then create an `AppHeader` component to display your app's title.
