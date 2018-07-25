@@ -64,12 +64,12 @@ log("Hello there")
 > There are more than this, but they are the same data types that exist in JavaScript proper.
 
 Try updating your version of `logger.ts` and re-running the compiler. 
-    - Did the output change?
+- Did the output change?
 
 ### Custom Types (Interfaces)
-A lot of times we end up passing complex objects around.  An `interface` allows us to specifically define what properties and methods a complex object has.
+Often we end up passing complex objects around.  An `interface` allows us to specifically define what properties and methods a complex object has.
 
-Lets update our `log` method to support taking in an object that contains both a message and severity.
+Lets update our `log` method to support taking in an object that contains both a `message` and `severity`.
 ``` typescript
 interface LogEntry {
     message: string,
