@@ -15,7 +15,7 @@ npm run start
 2. With the `npm run start` process is still active, try updating the 'hello there' message
     - Did your browser update the message for you automatically?
 
-## 2. Create your first React Component
+## 2. Create your first React Components
 
 ### You should know...
 #### React is Component Based
@@ -69,7 +69,7 @@ React.createElement("div", { id: "root" }, "Hello world");
 ```
 [Click here](http://babeljs.io/repl/#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DYUwLgBGAWCWB2BzCBeCAiA9vcB3TMATiCOgNwBQAPACawBuAfABIjDCYT6HA0QDeMBIgC-AoUhFUA9HSZkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&sourceType=module&lineWrap=false&presets=react%2Cstage-2&prettier=true&targets=&version=6.26.0&envVersion=1.6.2) to experiment with how JSX gets transpiled.
 
-### Exercise
+### **Exercise**: Create 2 new components
 Create a brand new React component, `App`, to serve as your application's top level container. Then create an `AppHeader` component to display your app's title.
 
 1. Create a new file, `src/App.tsx`
@@ -87,11 +87,66 @@ Create a brand new React component, `App`, to serve as your application's top le
 7. Import `AppHeader` into `App` and render it.
     - Do you see the updated app title in the browser?
 
-## Working with `props`
+## 3. Working with `props`
+In our exercise, we have the app's title hardcoded inside of `AppHeader`. But what if we wanted our `App` component to be able to tell `AppHeader` what the title should be?  
+
 The most common/useful thing you'll find about React is how easy it is to pass parameters/arguments to child components. These are called `props`.
+
+Let's say we wanted to enhance our previously referenced `EditButton`, to be a little more generic and powerful.  We want to be able to specify which Icon to show, and what should happen when we click the button.
+``` tsx
+import * as React from 'react';
+
+export default class IconButton extends React.Component<IconButtonProps, {}> {
+    render() {
+        return (
+            <div onClick={this.props.onClick}>
+                <i className={"ms-Icon ms-Icon--" + this.props.icon} />
+            </div>
+        );
+    }
+}
+
+export interface IconButtonProps {
+    icon: string,
+    onClick: () => void
+}
+```
+- At the bottom of our component file we define the "Props" interface. This is how are parent components can tell what they should pass in.
+- Inside our component we can get access to prop values using `this.props.PROP_NAME` syntax.
+
+Now that the `IconButton` accepts `props`, we can create an instances of the `IconButton` in a parent component and pass prop values. 
+``` tsx
+export default class ParentComponent extends React.Component {
+    onAddItemClick = (event) => {
+        console.log("You clicked the IconButton to ADD an item")
+    }
+    onRemoveItemClick = (event) => {
+        console.log("You clicked the IconButton to REMOVE an item")
+    }
+    render() {
+        return (
+            <div>
+                <IconButton icon="Plus" onClick={this.onAddItemClick} />
+                <IconButton icon="Trash" onClick={this.onRemoveItemClick} />
+            </div>
+        );
+    }
+}
+```
+Even in this simple example we are already seeing great code reuse! The IconButton is ONLY responsible for what it looks like. It doesn't need to worry about the onClick logic.
+
+### **Exercise**: Parameterize the App's Title
+1. Update `AppHeader` to accept a `title` prop
+    - *hint*: `AppHeaderProps` interface
+2. Update `AppHeader` to render the `title` prop value
+    - *hint*: `this.props.foo`
+3. Update `App` to pass a `title` prop value to `AppHeader`
+    - Change the title a little so you can tell it updated
+    - Do you see the updated title in the browser?
+
 ## Helpful Snippets
 
-*New react component*
+*New TypeScript React component*
 ``` tsx
 import * as React from 'react';
 
