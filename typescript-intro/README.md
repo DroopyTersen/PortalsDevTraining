@@ -1,6 +1,11 @@
 # Intro to Typescript
 TypeScript is a superset of JavaScript that compiles to plain JavaScript
 
+1. [Setup TypeScript](#1.-Setup-TypeScript)
+2. [Types & Interfaces](#2.-Types-&-Interfaces)
+3. [Classes](#3.-Classes)
+4. [Modules](#4.-Modules)
+
 *Translation*: We can write our code using advanced language features then run it through a process that turns it into regular JavaScript so it will run in any browser.
 
 **What kind of "advanced language features"?**
@@ -217,7 +222,7 @@ We want to be able to create instances of "dogs". They should all have a name an
 *Extra Credit*
 - Create a `Chihuahua` class that overrides the parent `bark()` method to say, "Yo quiero Taco Bell"
 
-## 5. Modules
+## 4. Modules
 Modules allow us to split our code up into digestible (encapsulated) chunks.  With modules we can import and export these chunks of code throughout our project.
 
 In the past we would either:
