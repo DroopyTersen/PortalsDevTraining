@@ -134,6 +134,9 @@ Let's say we have a SharePoint list to store company Announcements.  When we que
     - Open the browser developer tools, `F12`
     - Do you see the titles logged to the console?
 
+*Extra Credit*: Update the code so you are working with real `Date` objects
+- *Hint*: `Array.map`
+- *Hint*: `new Date(string)`
 
 ## 3. Classes
 A `class` allows us to define something as set of methods and properties.  With this `class` definition, we can easily create many instances of that "something". 
