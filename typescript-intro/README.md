@@ -211,8 +211,91 @@ We want to be able to create instances of "dogs". They should all have a name an
         - Should pause for `duration`(milliseconds) using `setTimeout`, then `console.log("I'm awake")`
 5. Create instances of each of the Dog classes
     - Invoke each of their methods
+6. SAVE THIS CODE SOMEWHERE! 
+    - We are going to use it in the next exercise
 
 *Extra Credit*
 - Create a `Chihuahua` class that overrides the parent `bark()` method to say, "Yo quiero Taco Bell"
 
 ## 5. Modules
+Modules allow us to split our code up into digestible (encapsulated) chunks.  With modules we can import and export these chunks of code throughout our project.
+
+In the past we would either:
+- Put all out code in a single JavaScript file. This could be thousands of lines.
+- Split it into multiple files and then add a `script` tag for each. 
+    - The problem was that some files depended on others, and you needed to manage that with the order of your `script` tags.
+    - Each script tag was a network request which slows down the site.
+
+### Default Import/Export
+Lets say we have a couple utility functions for working with the DOM. We want to put them in a file `domUtils.ts` and then be able to import those functions elsewhere in the project
+``` typescript
+function getElements(selector) {
+    return [].slice.call(document.querySelectorAll(selector), 0);
+}
+
+function removeElement(elem) {
+    if (elem) {
+        let parentElem = elem.parentNode;
+        if (parentElem) parentElem.removeChild(elem);
+    }
+}
+
+function addStyle(elem, styles) {
+    let styleAttributes = Object.keys(styles);
+    styleAttributes.map(function(key) {
+        elem.style[key] = styles[key]
+    })
+    return elem;
+}
+
+let domUtils = { getElements, removeElement, addStyle }
+export default domUtils;
+```
+- `export default` means we are exporting a primary thing (in this case the `domUtils` object)
+
+We can then consume the `domUtils` functions in a different file
+``` typescript
+import domUtils from "./domUtils"
+
+let profilePhotos = domUtils.getElements("img.profile-photo");
+```
+
+### Named Import/Export
+We also have the option of exporting items more granularly/specifically.  Instead of exporting the entire `domUtils` object, we could export the functions individually so that they could be imported individually. This allows us to potentially trim the size of our codebase.
+
+``` typescript
+export function getElements(selector) {
+    return [].slice.call(document.querySelectorAll(selector), 0);
+}
+
+export function removeElement(elem) {
+    if (elem) {
+        let parentElem = elem.parentNode;
+        if (parentElem) parentElem.removeChild(elem);
+    }
+}
+
+export function addStyle(elem, styles) {
+    let styleAttributes = Object.keys(styles);
+    styleAttributes.map(function(key) {
+        elem.style[key] = styles[key]
+    })
+    return elem;
+}
+```
+- All we have to do is put the `export` keyword before each function to make it consumable.
+
+To perform a named import, we wrap the name in curly braces, `import { myThing } from "./thePlace"`
+
+``` typescript
+import { getElements } from "./domUtils"
+
+let profilePhotos = getElements("img.profile-photo");
+```
+- Now we only pull in the single function 
+- Our codebase gets 17 lines smaller by not leaving out the other 2 functions.
+
+As a rule of thumb, if your module exports a single thing (like a Class), then use a default export, otherwise use named exports.
+
+> There are tradeoffs to default vs named import/exports. Named can save you space, but if you are pulling a dozen functions from the same file, your import statement can get pretty unruly.
+
