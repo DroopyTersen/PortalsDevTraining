@@ -1,10 +1,11 @@
 # Intro to Typescript
-TypeScript is a superset of JavaScript that compiles to plain JavaScript
 
 1. [Setup TypeScript](#1.-Setup-TypeScript)
 2. [Types & Interfaces](#2.-Types-&-Interfaces)
 3. [Classes](#3.-Classes)
 4. [Modules](#4.-Modules)
+
+TypeScript is a superset of JavaScript that compiles to plain JavaScript
 
 *Translation*: We can write our code using advanced language features then run it through a process that turns it into regular JavaScript so it will run in any browser.
 
@@ -304,3 +305,10 @@ As a rule of thumb, if your module exports a single thing (like a Class), then u
 
 > There are tradeoffs to default vs named import/exports. Named can save you space, but if you are pulling a dozen functions from the same file, your import statement can get pretty unruly.
 
+### Exercise: Moduluarize the Dog Classes
+Turn each class you created in the previous exercise into it's own module.
+
+1. Create a `.ts` file for each dog class
+2. Create an `entry.ts` file and create instances of the classes and invoke their methods.
+3. Run the TypeScript compiler 
+    - `tsc entry.ts`
