@@ -25,12 +25,34 @@ The "React way" advises us to decompose complex UI's into separate encapsulated 
 
 *Translation*: Break up the user interface into small pieces (components). Each component will be simpler because it focuses on only one thing. It also opens the door for component reuse.
 
+#### **Example**: 
+Components are very similar to a DOM tree in HTML. You have the ability to nest components within other components. It is very common to have a container component that will hold all the children components.
+
+Let's breakdown the Announcements web part into a component structure:
+
+* Container
+    * Card
+        * Image
+        * Text
+            * Link Title
+            * Description
+
+An announcement card has 2 main sections: image and text details. Within the text details, there are 2 additional nested components. 
+
+![alt text](./SPFxWorkshop-Exercise-ComponentBreakdown-Example.png  "ComponentExample")
+
+#### **Exercise**: Break this interface down into components
+Use your handout to outline the components needed for this gallery view.
+
+![alt text](https://res.cloudinary.com/droopytersen/image/upload/v1533004344/portalsdevtraining/SPfxWorkshop-Exercise-ComponentBreakdown-2.png  "ComponentExercise")
+
+
 #### JSX is HTML/JavaScript
 One of the things people find jarring when starting with React is that we put the component's HTML (and sometimes styles) right inside the component's JS file. This feels weird because we have been conditioned to separate our HTML, JS, and CSS. 
 
 React says, *"Nah, split your stuff out by components, not by file extensions, and then keep everything for that component together so it's easier to reuse"*.
 
-The example below is a React component the renders a blue circle button with an Edit icon.  
+The example below is a React component that renders a blue circle button with an Edit icon.  
 ``` tsx
 import * as React from 'react';
 
