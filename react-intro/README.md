@@ -44,7 +44,7 @@ Let's breakdown the Announcements web part into a component structure:
 
 An announcement card has 2 main sections: image and text details. Within the text details, there are 2 additional nested components. 
 
-![alt text](/react-intro/SPFxWorkshop-Exercise-ComponentBreakdown-Example.png  "ComponentExample")
+![alt text](/react-intro/SPfxWorkshop-Exercise-ComponentBreakdown-Example.PNG  "ComponentExample")
 
 #### **Exercise**: Break this interface down into components
 Use your handout to outline the components needed for this gallery view.
