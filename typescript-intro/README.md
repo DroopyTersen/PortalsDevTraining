@@ -1,9 +1,10 @@
 # Intro to Typescript
+[Back to Home](/README.md)
 
-1. [Setup TypeScript](#1.-Setup-TypeScript)
-2. [Types & Interfaces](#2.-Types-&-Interfaces)
-3. [Classes](#3.-Classes)
-4. [Modules](#4.-Modules)
+1. [Setup TypeScript](#1-setup-typescript)
+2. [Types & Interfaces](#2-types--interfaces)
+3. [Classes](#3-classes)
+4. [Modules](#4-modules)
 
 TypeScript is a superset of JavaScript that compiles to plain JavaScript
 

@@ -2,7 +2,14 @@
 
 [Back to Home](/README.md)
 
-## 1. Open the Exercise
+1. [Get setup](#1-get-setup)
+2. [Component Design](#2-component-based-design)
+3. [JSX and Components](#3-jsx)
+4. [Working with Props](#4-working-with-props)
+5. [Working with State](#5-working-with-state)
+6. [Helpful Snippets](#helpful-snippets)
+
+## 1. Get Setup
 In the terminal, open the `react-intro` directory. Next, install all of the dependencies. Lastly, try running the web application.
 ``` bash
 cd react-intro
@@ -17,10 +24,8 @@ npm run start
 2. With the `npm run start` process is still active, try updating the 'hello there' message
     - Did your browser update the message for you automatically?
 
-## 2. Create your first React Components
+## 2. Component Based Design
 
-### You should know...
-#### React is Component Based
 The "React way" advises us to decompose complex UI's into separate encapsulated components.  
 
 *Translation*: Break up the user interface into small pieces (components). Each component will be simpler because it focuses on only one thing. It also opens the door for component reuse.
@@ -39,7 +44,7 @@ Let's breakdown the Announcements web part into a component structure:
 
 An announcement card has 2 main sections: image and text details. Within the text details, there are 2 additional nested components. 
 
-![alt text](./SPFxWorkshop-Exercise-ComponentBreakdown-Example.png  "ComponentExample")
+![alt text](/react-intro/SPfxWorkshop-Exercise-ComponentBreakdown-Example.PNG  "ComponentExample")
 
 #### **Exercise**: Break this interface down into components
 Use your handout to outline the components needed for this gallery view.
@@ -47,7 +52,8 @@ Use your handout to outline the components needed for this gallery view.
 ![alt text](https://res.cloudinary.com/droopytersen/image/upload/v1533004344/portalsdevtraining/SPfxWorkshop-Exercise-ComponentBreakdown-2.png  "ComponentExercise")
 
 
-#### JSX is HTML/JavaScript
+## 3. JSX
+#### JSX is HTML. JSX is JavaScript.
 One of the things people find jarring when starting with React is that we put the component's HTML (and sometimes styles) right inside the component's JS file. This feels weird because we have been conditioned to separate our HTML, JS, and CSS. 
 
 React says, *"Nah, split your stuff out by components, not by file extensions, and then keep everything for that component together so it's easier to reuse"*.
@@ -76,9 +82,6 @@ const styles = {
     }
 }
 ```
-- The component is just a `class` that inherits from `React.Component`.  
-- The one rule to remember is that all **components must implement a `render` method**.
-
 Inside the `render` method you probably noticed something that looks HTML. 
 - But what are those curly braces? 
 - And how can we have html inside a JS/TS file if it isn't wrapped in a quotes? It's certainly not valid JavaScript/TypeScript. 
@@ -95,6 +98,10 @@ If you're curious how it works, when we run our `build` step, the transpiler tur
 React.createElement("div", { id: "root" }, "Hello world");
 ```
 [Click here](http://babeljs.io/repl/#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DYUwLgBGAWCWB2BzCBeCAiA9vcB3TMATiCOgNwBQAPACawBuAfABIjDCYT6HA0QDeMBIgC-AoUhFUA9HSZkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&sourceType=module&lineWrap=false&presets=react%2Cstage-2&prettier=true&targets=&version=6.26.0&envVersion=1.6.2) to experiment with how JSX gets transpiled.
+
+In the example component above, also note:
+- The component is just a `class` that inherits from `React.Component`.  
+- The one rule to remember is that all **components must implement a `render` method**.
 
 #### A custom Component can be rendered in another Component's JSX
 Once we create a component, we can use it inside another component's JSX.
@@ -146,7 +153,7 @@ Create a brand new React component, `App`, to serve as your application's top le
 7. Import `AppHeader` into `App` and render it.
     - Do you see the updated app title in the browser?
 
-## 3. Working with `props`
+## 4. Working with `props`
 In our exercise, we have the app's title hardcoded inside of `AppHeader`. But what if we wanted our `App` component to be able to tell `AppHeader` what the title should be?  
 
 The most common/useful thing you'll find about React is how easy it is to pass parameters/arguments to child components. These are called `props`.
@@ -203,7 +210,7 @@ Even in this simple example we are already seeing great code reuse! The IconButt
     - Change the title a little so you can tell it updated
     - Do you see the updated title in the browser?
 
-## Working with `state`
+## 5. Working with `state`
 We successfully injected a parameterized `title` into our `AppHeader`, but the `title` value is still hardcoded inside the `App` component.  What happens if we need more dynamic data? 
 
 The classic example is an 'Increment Count' app. It displays a big number and a button. Then increments the number everytime you click the button.  In this scenario we obviously can't hardcode the click count inside `App`, we need to "react" (\*groan\*).
