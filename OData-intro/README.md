@@ -1,11 +1,11 @@
 # OData Introduction
 
 1. [View OData Results in Chrome](#-View-OData-Results-in-Chrome)
-2. [OData](#-OData)
-3. [Query Operations](#-Query-Operations)
-4. [Example](#-Example)
-5. [Common Operators](#-OData-$filter-Common-Operators)
-6. [Exercise](#-Exercise)
+2. [OData](#-odata)
+3. [Query Operations](#-query-operations)
+4. [Example](#-example)
+5. [Common Operators](#odata-filter-common-operators)
+6. [Exercise](#-exercise)
 
 ## View OData Results in Chrome
 Chrome does not display SharePoint XML responses well in the browser. In order to view the response from a REST call,
