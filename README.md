@@ -5,5 +5,5 @@ This GIT repository contains exercises, tutorials and walkthroughs to supplement
 - [Intro to TypeScript](/typescript-intro/README.md)
 - [Intro to React](/react-intro/README.md)
 - [SharePoint REST API & OData](/OData-intro/README.md)
-- DAY 2: Your first SPFx Web Part
-- DAY 2: Anniversaries Web Part Workshop
+- [Your first SPFx Web Part](/spfx-webpart-intro/README.md)
+- Anniversaries Web Part Workshop
