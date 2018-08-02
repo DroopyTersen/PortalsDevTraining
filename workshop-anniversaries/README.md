@@ -1,11 +1,9 @@
 # Anniversaries Workshop
 
-1. [Requirements](#-Requirements-+-Design)
-2. [List Schema](#-List-Schema)
-3. [Generate Web Part - TODO](#Generate-Web-Part)
-4. [Rendering UI](#Rendering-UI)
-5. [Data Access - TODO](#Data-Access)
-6. [Complete Component Data - TODO](#Complete-Component-Data)
+1. [Requirements](#-Requirements--Design)
+2. [Mockup and Component Design](#-Mockup--Component-Design)
+3. [List Schema](#-List-Schema)
+4. [Mockdata](#-Mockdata)
 
 
 ## Requirements + Design
@@ -28,7 +26,7 @@ As a visitor to my intranet, I would like to see a list of current work Annivers
 ### Out of Scope
 * Will not display the employee's profile photo
 
-### Mockup
+## Mockup & Component Design
 ![alt text](./Anniversaries-Workshop-2.png "Anniversaries")
 ![alt text](./Anniversaries-Workshop.png "Anniversaries")
 
@@ -46,14 +44,7 @@ As a visitor to my intranet, I would like to see a list of current work Annivers
 
 4. Add new list items with several different Anniversary dates.
 
-## Generate Web Part
-
-## Rendering UI
-### Component Design
-1. Determine the components needed based off the web part mockup
-2. Create the component structure within the project
-
-### Setup Mockdata
+## Mockdata
 1. Create a new "data" folder
 2. Create a new .ts file for mockdata
 3. Use a default export, so we can reference the mockdata in our display
@@ -112,7 +103,3 @@ export default [
     },
 ]
 ```
-
-## Data Access
-
-## Complete Component Data
