@@ -27,8 +27,8 @@ As a visitor to my intranet, I would like to see a list of current work Annivers
 * Will not display the employee's profile photo
 
 ## Mockup & Component Design
-![alt text](./Anniversaries-Workshop-2.png "Anniversaries")
-![alt text](./Anniversaries-Workshop.png "Anniversaries")
+![alt text](/workshop-anniversaries/Anniversaries-Workshop-2.png "Anniversaries")
+![alt text](/workshop-anniversaries/Anniversaries-Workshop.png "Anniversaries")
 
 ## List Schema
 1. Create a SharePoint "Custom List"
